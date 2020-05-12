@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block heading %}
+<div class="row">
+    <div class="col-sm-6">
+        {{ book.title }}
+    </div>
+    <div class="col-sm-6">
+        <a href="{{ url_for('search')}}">HOME</a>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block body %}
+<h4>Author: {{book.author}}</h4>
+<h4>ISBN: {{book.isbn}}</h4>
+<h4>Year Published: {{book.year}}</h4>
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Review Number</th>
+                <th>ISBN</th>
+                <th>Review</th>
+                <th>Rating</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for review in reviews %}
+            <tr>
+                <td>{{review.rid}}</td>
+                <td>{{review.isbn}}</td>
+                <td>{{review.review}}</td>
+                <td>{{review.rating}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
